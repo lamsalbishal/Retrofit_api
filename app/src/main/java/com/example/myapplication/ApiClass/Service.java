@@ -5,6 +5,7 @@ public class Service {
 
     private String Name;
 
+    private String Logo;
 
     public String getOperatorCode() {
         return OperatorCode;
@@ -22,11 +23,20 @@ public class Service {
         Name = name;
     }
 
+    public String getLogo() {
+        return Logo;
+    }
+
+    public void setLogo(String logo) {
+        Logo = logo;
+    }
+
     @Override
     public String toString() {
         return "Service{" +
                 "OperatorCode='" + OperatorCode + '\'' +
                 ", Name='" + Name + '\'' +
+                ", Logo='" + Logo + '\'' +
                 '}';
     }
 }

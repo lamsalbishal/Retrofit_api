@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private DataAdapter adapter;
     private ListView listView;
 
-   private final String[] tv ={"19","23","33","47"};
-   private  final  String[] internet = {"16","22","30","34","39","44","45","54","55","56","57","58"};
+
+   private  String[] arrayReceived;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
          listView = (ListView) findViewById(R.id.tvlist);
 
 
-
-
+        Bundle bundle = getIntent().getExtras();
+        arrayReceived = bundle.getStringArray("opcode");
+//       for(int j = 0; j< arrayReceived.length; j++){
+//            Log.i("bundel data ", arrayReceived[j]);
+//        }
 
 
 
@@ -142,20 +145,18 @@ public class MainActivity extends AppCompatActivity {
 
                            Log.i("Service data", services1.get(x).getOperatorCode());
 
-                           for (int y = 0; y <tv.length; y++){
+                           for (int y = 0; y <arrayReceived.length ; y++){
 
-                              if((services1.get(x).getOperatorCode()).equals(tv[y])){
+                              if((services1.get(x).getOperatorCode()).equals(arrayReceived[y])){
                                   Log.i("success data only",services1.get(x).getName());
 
                                   TvInfo info = new TvInfo();
                                   info.Name = services1.get(x).getName();
-
+                                  info.Image = services1.get(x).getLogo();
                                   list.add(info);
                               }
                            }
-                           if((services1.get(x).getOperatorCode()).equals("19")){
-                               Log.i("tv data success","success");
-                           }
+
 
                         }
 
@@ -186,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call<Prabhu> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "Soory api data error", Toast.LENGTH_SHORT).show();
                 Log.i("Api data error",t.toString());
+
             }
         });
     }
