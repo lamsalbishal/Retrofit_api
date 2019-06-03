@@ -3,6 +3,7 @@ package com.example.myapplication.Interface;
 import com.example.myapplication.ApiClass.Comment;
 import com.example.myapplication.ApiClass.Post;
 import com.example.myapplication.ApiClass.Prabhu;
+import com.example.myapplication.ApiClass.PrabhuTv;
 import com.example.myapplication.ApiClass.Safari;
 
 import java.util.List;
@@ -26,6 +27,9 @@ public interface JsonPlaceHolder {
 
     @POST("GetProductList")
     Call<Prabhu> creatPostApi( @Header("x-token")String token,@Body Prabhu prabhu);
+
+    @POST("CheckPrabhuTvAccount")
+    Call<PrabhuTv> createPostTvApi(@Header("x-token")String token,@Body PrabhuTv prabhuTv);
 
     @POST("home")
     Call<Safari> createSafari(@Body Safari safari);

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -32,6 +33,7 @@ public class TvListView extends ArrayAdapter<TvInfo> {
 
 
         View view = LayoutInflater.from(context).inflate(R.layout.recycleview_list_activity,null);
+        LinearLayout listBtn = view.findViewById(R.id.billpaymentBtn);
         TextView category = view.findViewById(R.id.categoryView);
         ImageView imageView = view.findViewById(R.id.tvImage);
 
@@ -42,10 +44,16 @@ public class TvListView extends ArrayAdapter<TvInfo> {
         if(!(info.Image.isEmpty()))
         {
 
-            Picasso.with(getContext()).load(info.Image).into(imageView);
+            Picasso.with(context).load(info.Image).into(imageView);
         }
-        Intent i = new Intent(getContext(), BillPayment.class);
-        context.startActivity(i);
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, BillPayment.class);
+                context.startActivity(i);
+            }
+        });
+
 
 
         return  view;

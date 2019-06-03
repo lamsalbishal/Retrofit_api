@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BillPayment">
+    tools:context=".BillPayment"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/showCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bill Payment view"/>
+
+    <EditText
+        android:id="@+id/tvnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="tvnumber"/>
+
+    <Button
+        android:layout_margin="10dp"
+        android:id="@+id/billpaymentBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bill Payment"/>
+
+</LinearLayout>
