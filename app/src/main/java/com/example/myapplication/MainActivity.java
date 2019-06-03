@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
 
-
+        Log.d("test","main");
 
         //getApi();
        // postApi();
@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
                                   TvInfo info = new TvInfo();
                                   info.Name = services1.get(x).getName();
+                                    Log.i("NAME",info.Name);
                                   info.Image = services1.get(x).getLogo();
                                   list.add(info);
                               }
@@ -172,13 +173,6 @@ public class MainActivity extends AppCompatActivity {
 //                        Log.i("name of api data",services1.get(x).getName());
 //                    }
 //                }
-
-
-
-
-
-
-
 
                // showApi.append(data.toString());
             }

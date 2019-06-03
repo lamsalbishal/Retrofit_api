@@ -1,5 +1,7 @@
 package com.example.myapplication.ApiClass;
 
+import java.util.ArrayList;
+
 public class PrabhuTv {
 
     private String Code;
@@ -10,6 +12,7 @@ public class PrabhuTv {
 
     private String  CustomerName;
 
+    private ArrayList<RenewalPlans> RenewalPlans;
 
 
 
@@ -65,6 +68,14 @@ public class PrabhuTv {
 
     public void setCustomerName(String customerName) {
         CustomerName = customerName;
+    }
+
+    public ArrayList<com.example.myapplication.ApiClass.RenewalPlans> getRenewalPlans() {
+        return RenewalPlans;
+    }
+
+    public void setRenewalPlans(ArrayList<com.example.myapplication.ApiClass.RenewalPlans> renewalPlans) {
+        RenewalPlans = renewalPlans;
     }
 
     @Override

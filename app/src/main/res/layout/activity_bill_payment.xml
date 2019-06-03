@@ -14,6 +14,7 @@
         android:text="Bill Payment view"/>
 
     <EditText
+        android:text="00720767270"
         android:id="@+id/tvnumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

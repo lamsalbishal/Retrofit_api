@@ -22,5 +22,10 @@ public class PersonalDetail extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<String> test = intent.getStringArrayListExtra("customer");
         Log.i("test value check",test.toString());
+         casId.setText(test.get(1));
+         customerName.setText(test.get(0));
+         customerId.setText(test.get(2));
+
     }
+
 }

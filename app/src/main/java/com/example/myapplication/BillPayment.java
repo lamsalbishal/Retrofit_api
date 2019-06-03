@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.myapplication.ApiClass.Prabhu;
 import com.example.myapplication.ApiClass.PrabhuTv;
+import com.example.myapplication.ApiClass.RenewalPlans;
 import com.example.myapplication.ApiClass.Service;
 import com.example.myapplication.ApiClass.Services;
 import com.example.myapplication.Helper.TvInfo;
@@ -64,9 +65,16 @@ public class BillPayment extends AppCompatActivity {
             @Override
             public void onResponse(Call<PrabhuTv> call, Response<PrabhuTv> response) {
                 Log.i("message",response.body().getCustomerName());
-                if(response.body().getCode().equals("000")){
-                    Intent i = new Intent(BillPayment.this,PersonalDetail.class);
 
+                if(response.body().getCode().equals("000")){
+
+                    ArrayList<RenewalPlans> renewalPlans = response.body().getRenewalPlans();
+                    if(renewalPlans.size() != 0) {
+                        for (int j = 0; j < renewalPlans.size(); j++) {
+                            Log.i("renewal plans ", "no length");
+                        }
+                    }
+                    Intent i = new Intent(BillPayment.this,PersonalDetail.class);
                     test.add(response.body().getCustomerName());
                     test.add(response.body().getCasId());
                     test.add(response.body().getCustomerId());
