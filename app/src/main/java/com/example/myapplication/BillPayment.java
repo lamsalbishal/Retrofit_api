@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.ApiClass.Prabhu;
 import com.example.myapplication.ApiClass.PrabhuTv;
@@ -31,7 +32,11 @@ public class BillPayment extends AppCompatActivity {
     Button billPayment;
     EditText tvcode;
     TextView showcode;
+     String opCode;
     ArrayList<String> test = new ArrayList<String>();
+    PrabhuTv prabhuTv;
+    String urldata;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,9 @@ public class BillPayment extends AppCompatActivity {
         showcode = (TextView) findViewById(R.id.showCode);
         tvcode = (EditText) findViewById(R.id.tvnumber);
         billPayment = findViewById(R.id.billpaymentBtn);
+
+        Intent intent = getIntent();
+        opCode=intent.getStringExtra("opCode");
 
         billPayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,29 +66,52 @@ public class BillPayment extends AppCompatActivity {
                 addConverterFactory(GsonConverterFactory.create()).
                 build();
         JsonPlaceHolder jsonPlaceHolder = retrofit.create(JsonPlaceHolder.class);
-        PrabhuTv prabhuTv = new PrabhuTv("KAPIL1", "JHK#1234", code);
-        Call<PrabhuTv> callapi = jsonPlaceHolder.createPostTvApi("fyZbT@r6_Rx$HGfNKyUL", prabhuTv);
+
+
+        if(opCode.equals("47")){
+             urldata = "CheckPrabhuTvAccount";
+             prabhuTv = new PrabhuTv("KAPIL1", "JHK#1234",code,"");
+
+        }else if(opCode.equals("19")){
+            urldata ="CheckDishHomeAccount";
+            prabhuTv = new PrabhuTv("KAPIL1", "JHK#1234","",code);
+        }else if(opCode.equals("33")){
+            urldata ="CheckSimTVAccount";
+            prabhuTv = new PrabhuTv("KAPIL1", "JHK#1234","",code);
+        }
+
+        Call<PrabhuTv> callapi = jsonPlaceHolder.createPostTvApi(urldata,"fyZbT@r6_Rx$HGfNKyUL", prabhuTv);
 
         callapi.enqueue(new Callback<PrabhuTv>() {
             @Override
             public void onResponse(Call<PrabhuTv> call, Response<PrabhuTv> response) {
-                Log.i("message",response.body().getCustomerName());
+                Log.i("response body",response.body().toString());
+                if((response.body().getCode()).equals("011")){
+                    Toast.makeText(BillPayment.this, "unsuccessfull", Toast.LENGTH_SHORT).show();
+                }else {
 
-                if(response.body().getCode().equals("000")){
-
-                    ArrayList<RenewalPlans> renewalPlans = response.body().getRenewalPlans();
-                    if(renewalPlans.size() != 0) {
-                        for (int j = 0; j < renewalPlans.size(); j++) {
-                            Log.i("renewal plans ", "no length");
-                        }
-                    }
-                    Intent i = new Intent(BillPayment.this,PersonalDetail.class);
-                    test.add(response.body().getCustomerName());
-                    test.add(response.body().getCasId());
-                    test.add(response.body().getCustomerId());
-                    i.putStringArrayListExtra("customer",(ArrayList<String>) test);
-                    startActivity(i);
+                    Toast.makeText(BillPayment.this, "success full", Toast.LENGTH_SHORT).show();
                 }
+
+
+
+
+
+//                if(response.body().getCode().equals("000")){
+
+//                    ArrayList<RenewalPlans> renewalPlans = response.body().getRenewalPlans();
+//                    if(renewalPlans.size() != 0) {
+//                        for (int j = 0; j < renewalPlans.size(); j++) {
+//                            Log.i("renewal plans ", "no length");
+//                        }
+//                    }
+//                    Intent i = new Intent(BillPayment.this,PersonalDetail.class);
+//                    test.add(response.body().getCustomerName());
+//
+//                    test.add(response.body().getCustomerId());
+//                    i.putStringArrayListExtra("customer",(ArrayList<String>) test);
+//                    startActivity(i);
+
 
 
             }

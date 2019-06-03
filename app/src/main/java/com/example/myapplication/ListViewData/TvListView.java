@@ -50,6 +50,7 @@ public class TvListView extends ArrayAdapter<TvInfo> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, BillPayment.class);
+                i.putExtra("opCode",info.opCode);
                 context.startActivity(i);
             }
         });

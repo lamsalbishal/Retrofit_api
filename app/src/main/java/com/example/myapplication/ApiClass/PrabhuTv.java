@@ -23,11 +23,13 @@ public class PrabhuTv {
 
     private String CasId;
 
-    public PrabhuTv(String userName, String password, String casId) {
+    private String Subscriber;
+
+    public PrabhuTv(String userName, String password, String casId, String subscriber) {
         UserName = userName;
         Password = password;
         CasId = casId;
-
+        Subscriber = subscriber;
     }
 
     public String getCode() {

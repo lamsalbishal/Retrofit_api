@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
                                   info.Name = services1.get(x).getName();
                                     Log.i("NAME",info.Name);
                                   info.Image = services1.get(x).getLogo();
+                                  info.opCode = services1.get(x).getOperatorCode();
                                   list.add(info);
                               }
                            }

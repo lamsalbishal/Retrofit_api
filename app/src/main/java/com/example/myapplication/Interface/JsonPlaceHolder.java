@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface JsonPlaceHolder {
 
@@ -28,8 +29,11 @@ public interface JsonPlaceHolder {
     @POST("GetProductList")
     Call<Prabhu> creatPostApi( @Header("x-token")String token,@Body Prabhu prabhu);
 
-    @POST("CheckPrabhuTvAccount")
-    Call<PrabhuTv> createPostTvApi(@Header("x-token")String token,@Body PrabhuTv prabhuTv);
+    @POST("{fullUrl}")
+    Call<PrabhuTv> createPostTvApi(@Path(value = "fullUrl", encoded = true) String fullUrl,@Header("x-token")String token, @Body PrabhuTv prabhuTv);
+
+
+
 
     @POST("home")
     Call<Safari> createSafari(@Body Safari safari);
