@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PersonalDetail"></activity>
+        <activity android:name=".ElectricityCustomerDetail"></activity>
+        <activity android:name=".ElectricityInsertField" />
+        <activity android:name=".Electricity" />
+        <activity android:name=".PersonalDetail" />
         <activity android:name=".BillPayment" />
         <activity android:name=".HomeActivity">
             <intent-filter>
@@ -21,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <service android:name=".Services.BillPAymentServices" />
     </application>
 
 </manifest>

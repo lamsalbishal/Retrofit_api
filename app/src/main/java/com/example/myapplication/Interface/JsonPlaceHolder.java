@@ -1,6 +1,8 @@
 package com.example.myapplication.Interface;
 
 import com.example.myapplication.ApiClass.Comment;
+import com.example.myapplication.ApiClass.GetNeaBill;
+import com.example.myapplication.ApiClass.NeaOfficeCode;
 import com.example.myapplication.ApiClass.Post;
 import com.example.myapplication.ApiClass.Prabhu;
 import com.example.myapplication.ApiClass.PrabhuTv;
@@ -33,6 +35,12 @@ public interface JsonPlaceHolder {
     Call<PrabhuTv> createPostTvApi(@Path(value = "fullUrl", encoded = true) String fullUrl,@Header("x-token")String token, @Body PrabhuTv prabhuTv);
 
 
+    @POST("GetNEAOfficeCode")
+    Call<NeaOfficeCode> createNEAOfiiceApi(@Header("x-token")String token, @Body NeaOfficeCode neaOfficeCode);
+
+
+    @POST("GetNEABill")
+    Call<GetNeaBill> createNeaBill(@Header("x-token")String token, @Body GetNeaBill getNeaBill);
 
 
     @POST("home")

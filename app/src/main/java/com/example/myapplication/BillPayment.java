@@ -18,6 +18,7 @@ import com.example.myapplication.ApiClass.Services;
 import com.example.myapplication.Helper.TvInfo;
 import com.example.myapplication.Interface.JsonPlaceHolder;
 import com.example.myapplication.ListViewData.TvListView;
+import com.example.myapplication.Services.BillPAymentServices;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,12 @@ public class BillPayment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               showcode.setText(tvcode.getText().toString());
-              prabhuTvApi(tvcode.getText().toString());
+            //    prabhuTvApi(tvcode.getText().toString());
+
+                Intent  serviceIntent = new Intent(BillPayment.this,BillPAymentServices.class);
+                serviceIntent.putExtra("code", tvcode.getText().toString());
+                serviceIntent.putExtra("opCode",opCode);
+                startService(serviceIntent);
             }
         });
 

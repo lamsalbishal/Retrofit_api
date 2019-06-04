@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button tv,internet;
+    Button tv,internet,electricity;
 
     private final String[] tvopcode ={"47","33","23","19"};
     private  final  String[] internetopcode = {"16","22","30","34","39","44","45","54","55","56","57","58"};
@@ -21,6 +21,8 @@ public class HomeActivity extends AppCompatActivity {
         tv = findViewById(R.id.tvBtn);
 
         internet = findViewById(R.id.internetBtn);
+
+        electricity = findViewById(R.id.electricity);
 
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,14 @@ public class HomeActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putStringArray("opcode",internetopcode);
                 i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
+
+        electricity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this,Electricity.class);
                 startActivity(i);
             }
         });
