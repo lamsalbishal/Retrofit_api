@@ -8,16 +8,19 @@ import android.widget.TextView;
 
 import com.example.myapplication.ApiClass.BillDetail;
 import com.example.myapplication.ApiClass.GetNeaBill;
+import com.example.myapplication.Helper.BillDetailHelper;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ElectricityCustomerDetail extends AppCompatActivity {
 
-
+    private Gson gson;
 
     String arrayData;
     @Override
@@ -27,15 +30,21 @@ public class ElectricityCustomerDetail extends AppCompatActivity {
         Intent intent = getIntent();
         ArrayList<String> getBill = intent.getStringArrayListExtra("DetailCode");
 
-        Log.i("json response",getBill.get(4));
+
+
+
+
+
         try {
             JSONArray jsonArray = new JSONArray(getBill.get(4));
 
 
+
             for(int i = 0; i<jsonArray.length(); i++){
-               Log.i("loop array", jsonArray.get(i).toString());
+                JSONObject row = jsonArray.getJSONObject(i);
+                arrayData = row.getString("BillDate");
             }
-            Log.i("string array", "message");
+            Log.i("string array", arrayData);
         } catch (JSONException e) {
             e.printStackTrace();
         }

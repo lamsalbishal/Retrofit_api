@@ -65,12 +65,12 @@ public class BillDetail {
     @Override
     public String toString() {
         return "{" +
-                "'" + BillDate + '\'' +
-                ",'" + DueBillOf + '\'' +
-                ",'" + BillAmount + '\'' +
-                ",'" + NoOfDays + '\'' +
-                ",'" + Status + '\'' +
-                ",'" + PayableAmount + '\'' +
+                "BillDate='" + BillDate + '\'' +
+                ", DueBillOf='" + DueBillOf + '\'' +
+                ", BillAmount='" + BillAmount + '\'' +
+                ", NoOfDays='" + NoOfDays + '\'' +
+                ", Status='" + Status + '\'' +
+                ", PayableAmount='" + PayableAmount + '\'' +
                 '}';
     }
 }

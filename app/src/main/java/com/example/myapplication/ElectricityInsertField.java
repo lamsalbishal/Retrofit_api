@@ -96,6 +96,7 @@ public class ElectricityInsertField extends AppCompatActivity {
 
 
 
+
               if(response.body().getCode().equals("000")){
 
 
@@ -104,8 +105,6 @@ public class ElectricityInsertField extends AppCompatActivity {
                 addData.add(response.body().getOffice());
                 addData.add(response.body().getTotalDueAmount());
                 addData.add(response.body().getBillDetail().toString());
-
-
 
 
                   Intent intent = new Intent(ElectricityInsertField.this,ElectricityCustomerDetail.class);
