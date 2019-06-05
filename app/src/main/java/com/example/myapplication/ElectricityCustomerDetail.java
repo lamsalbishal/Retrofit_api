@@ -32,7 +32,7 @@ public class ElectricityCustomerDetail extends AppCompatActivity {
 
 
 
-
+        Log.i("GET",getBill.toString());
 
 
         try {
