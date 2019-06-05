@@ -32,13 +32,8 @@ public class ElectricityCustomerDetail extends AppCompatActivity {
 
 
 
-
-
-
         try {
             JSONArray jsonArray = new JSONArray(getBill.get(4));
-
-
 
             for(int i = 0; i<jsonArray.length(); i++){
                 JSONObject row = jsonArray.getJSONObject(i);
